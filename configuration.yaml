@@ -1,0 +1,71 @@
+#Changed: 05-08-2023
+default_config:
+
+#Themes
+frontend:
+    themes: !include_dir_merge_named themes
+
+#Text to speech
+tts:
+  - platform: google_translate
+    language: "de"
+
+#Includes
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+homeassistant:
+  customize: !include customize.yaml
+
+#Proxmox Integration
+proxmoxve:
+  - host: 192.168.1.2
+    port: 8006
+    verify_ssl: false
+    realm: pve
+    username: !secret proxmoxve_user
+    password: !secret proxmoxve_password
+    nodes:
+      - node: pve
+        vms:
+          - 101
+          - 102
+          - 105
+          - 107
+          - 108
+
+#Nextcloud Kalender
+calendar:
+  - platform: caldav
+    username: !secret calendar_username
+    password: !secret calendar_password
+    url: !secret calendar_url
+
+#HTTP
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 127.0.0.1
+    - 172.30.33.0/24
+    - ::1
+
+climate:
+  - platform: climate_group
+    name: "Test"
+    temperature_unit: C
+    entities:
+      - climate.thermostat_buro_nord
+      - climate.thermostat_buro_sud
+
+#Time and Date Sensor
+sensor:
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'date_time_utc'
+      - 'date_time_iso'
+      - 'time_date'
+      - 'time_utc'
+      - 'beat'   

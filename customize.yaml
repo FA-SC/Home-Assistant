@@ -1,0 +1,50 @@
+media_player.sony_bravia_tv:
+  source_list:
+  - HDMI 1
+  - HDMI 2
+  - HDMI 3/ARC
+  - HDMI 4
+  - AV 1
+  - AV 2/Component
+  - PlayStation 4
+  - YouTube
+  - Twitch
+  - Prime Video
+  - Netflix
+  - Disney+
+  - AirScreen
+  - Spotify
+  - Vimeo
+  - ZDFmediathek
+  - ProSieben
+  - ProSieben MAXX
+  - SAT.1
+  - TVNOW
+  - ARD Mediathek
+  icon: hass:television
+climate.thermostat_bad_heating:
+  min_temp: 4
+  max_temp: 28
+climate.thermostat_kuche_heating:
+  min_temp: 4
+  max_temp: 28
+climate.thermostat_schlafzimmer_heating:
+  min_temp: 4
+  max_temp: 28
+climate.thermostat_wohnzimmer_heating:
+  min_temp: 4
+  max_temp: 28
+group.switch:
+  icon: hass:flash
+light.hue_play_1:
+  friendly_name: TV oben
+light.lampe_tvlinks:
+  friendly_name: TV links
+light.lampe_tvrechts:
+  friendly_name: TV rechts
+group.lichter_tv:
+  icon: hass:television
+group.terrarium:
+  icon: hass:snake
+binary_sensor.bad_fensterkontakt:
+  device_class: window

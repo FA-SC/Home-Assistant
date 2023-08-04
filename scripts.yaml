@@ -1,0 +1,85 @@
+timer_ventilator_120_min:
+  alias: Timer Ventilator 120 Min.
+  sequence:
+  - type: turn_on
+    device_id: 75ed9779605780f931526001baa52ba0
+    entity_id: switch.steckdose_ventilator
+    domain: switch
+  - delay:
+      hours: 2
+      minutes: 0
+      seconds: 0
+      milliseconds: 0
+  - type: turn_off
+    device_id: 75ed9779605780f931526001baa52ba0
+    entity_id: switch.steckdose_ventilator
+    domain: switch
+  mode: single
+  icon: mdi:timer-sand
+timer_ventilator_60_min:
+  alias: 'Timer Ventilator 60 Min. '
+  sequence:
+  - type: turn_on
+    device_id: 75ed9779605780f931526001baa52ba0
+    entity_id: switch.steckdose_ventilator
+    domain: switch
+  - delay:
+      hours: 1
+      minutes: 0
+      seconds: 0
+      milliseconds: 0
+  - type: turn_off
+    device_id: 75ed9779605780f931526001baa52ba0
+    entity_id: switch.steckdose_ventilator
+    domain: switch
+  mode: single
+  icon: mdi:timer-sand
+leaving_home:
+  alias: Leaving Home
+  sequence:
+  - service: browser_mod.popup
+    data:
+      timeout: 5000
+      content:
+        type: vertical-stack
+        cards:
+        - type: conditional
+          conditions:
+          - entity: binary_sensor.bad_fensterkontakt
+            state: 'on'
+          card:
+            type: entities
+            entities:
+            - entity: binary_sensor.bad_fensterkontakt
+        - type: conditional
+          conditions:
+          - entity: binary_sensor.bad_fensterkontakt
+            state: 'off'
+          card:
+            type: custom:mushroom-title-card
+            title: Alle Fenster sind geschlossen.
+    target:
+      device_id: 203089f9b10fa76a17dd09efdfb2cd4c
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: scene.turn_on
+    target:
+      entity_id: scene.leaving_home
+    metadata: {}
+  mode: single
+  icon: mdi:home-export-outline
+neues_skript:
+  alias: Neues Skript
+  sequence:
+  - service: camera.snapshot
+    data: {}
+    target:
+      device_id: 203089f9b10fa76a17dd09efdfb2cd4c
+  mode: single
+git_update:
+  alias: GIT Update
+  sequence: []
+  mode: single

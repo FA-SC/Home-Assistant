@@ -1,0 +1,842 @@
+- id: '1647301386708'
+  name: Bewegungsmelder Flur
+  entities:
+    light.flur_deckenleuchte:
+      min_mireds: 140
+      max_mireds: 650
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      - xy
+      color_mode: color_temp
+      brightness: 128
+      color_temp: 405
+      hs_color:
+      - 28.957
+      - 73.657
+      rgb_color:
+      - 255
+      - 157
+      - 67
+      xy_color:
+      - 0.551
+      - 0.389
+      is_deconz_group: false
+      friendly_name: LAMPE:Flur
+      supported_features: 44
+      state: 'on'
+  icon: mdi:lightbulb-spot
+- id: '1658226785430'
+  name: Arbeiten
+  entities:
+    light.buero_deckenleuchte:
+      min_mireds: 153
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 254
+      color_temp: 153
+      hs_color:
+      - 54.768
+      - 1.6
+      rgb_color:
+      - 255
+      - 254
+      - 250
+      xy_color:
+      - 0.326
+      - 0.333
+      off_with_transition: false
+      off_brightness:
+      friendly_name: LAMPE:Büro_Deckenleuchte
+      supported_features: 40
+      state: 'on'
+  icon: mdi:desk
+  metadata: {}
+- id: '1658228944806'
+  name: Alarm Beleuchtung
+  entities:
+    light.flur_deckenleuchte:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 254
+      hs_color:
+      - 10.118
+      - 100
+      rgb_color:
+      - 255
+      - 43
+      - 0
+      xy_color:
+      - 0.689
+      - 0.309
+      off_with_transition: false
+      off_brightness:
+      friendly_name: LAMPE:Flur_Deckenleuchte
+      supported_features: 44
+      state: 'on'
+    light.wohnzimmer_deckenleuchte:
+      min_mireds: 153
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness:
+      friendly_name: LAMPE:Wohnzimmer_Deckenleuchte
+      supported_features: 40
+      color_mode: color_temp
+      brightness: 254
+      color_temp: 153
+      hs_color:
+      - 54.768
+      - 1.6
+      rgb_color:
+      - 255
+      - 254
+      - 250
+      xy_color:
+      - 0.326
+      - 0.333
+      state: 'on'
+    light.buero_deckenleuchte:
+      min_mireds: 153
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 254
+      color_temp: 153
+      hs_color:
+      - 54.768
+      - 1.6
+      rgb_color:
+      - 255
+      - 254
+      - 250
+      xy_color:
+      - 0.326
+      - 0.333
+      off_with_transition: false
+      off_brightness:
+      friendly_name: LAMPE:Büro_Deckenleuchte
+      supported_features: 40
+      state: 'on'
+    light.kueche_deckenleuchte:
+      min_mireds: 153
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness:
+      friendly_name: LAMPE:Küche_Deckenleuchte
+      supported_features: 40
+      color_mode: color_temp
+      brightness: 254
+      color_temp: 153
+      hs_color:
+      - 54.768
+      - 1.6
+      rgb_color:
+      - 255
+      - 254
+      - 250
+      xy_color:
+      - 0.326
+      - 0.333
+      state: 'on'
+    light.schlafzimmer_deckenleuchte:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 254
+      hs_color:
+      - 360
+      - 100
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      xy_color:
+      - 0.701
+      - 0.299
+      off_with_transition: false
+      off_brightness:
+      friendly_name: LAMPE:Schlafzimmer_Deckenleuchte
+      supported_features: 44
+      state: 'on'
+    light.bad_deckenleuchte:
+      min_mireds: 153
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness:
+      friendly_name: LAMPE:Bad_Deckenleuchte
+      supported_features: 40
+      color_mode: color_temp
+      brightness: 254
+      color_temp: 153
+      hs_color:
+      - 54.768
+      - 1.6
+      rgb_color:
+      - 255
+      - 254
+      - 250
+      xy_color:
+      - 0.326
+      - 0.333
+      state: 'on'
+  icon: mdi:alarm-light
+  metadata: {}
+- id: '1661902295595'
+  name: Schlafzimmer Licht Normal
+  entities:
+    light.signify_netherlands_b_v_lct015_huelight:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - xy
+      off_with_transition: false
+      off_brightness:
+      friendly_name: LAMPE:Schlafzimmer_Deckenleuchte
+      supported_features: 44
+      color_mode: color_temp
+      brightness: 128
+      color_temp_kelvin: 2732
+      color_temp: 366
+      hs_color:
+      - 28.327
+      - 64.71
+      rgb_color:
+      - 255
+      - 167
+      - 89
+      xy_color:
+      - 0.524
+      - 0.387
+      state: 'on'
+  metadata: {}
+- id: '1662319478119'
+  name: 4 Grad
+  entities:
+    climate.thermostat_bad_heating:
+      hvac_modes:
+      - heat
+      min_temp: 4
+      max_temp: 28
+      friendly_name: Thermostat Bad
+      supported_features: 1
+      current_temperature: 23.4
+      temperature: 4
+      state: heat
+    climate.thermostat_wohnzimmer_heating:
+      hvac_modes:
+      - heat
+      min_temp: 4
+      max_temp: 28
+      current_temperature: 23.2
+      temperature: 4
+      friendly_name: Thermostat Wohnzimmer
+      supported_features: 1
+      state: heat
+    climate.thermostat_buro_nord:
+      hvac_modes:
+      - heat
+      min_temp: 7
+      max_temp: 35
+      current_temperature: 24
+      temperature: 7
+      friendly_name: Thermostat Büro Nord
+      supported_features: 1
+      state: heat
+    climate.thermostat_buro_sud:
+      hvac_modes:
+      - heat
+      min_temp: 7
+      max_temp: 35
+      current_temperature: 24.1
+      temperature: 7
+      friendly_name: Thermostat Büro Süd
+      supported_features: 1
+      state: heat
+    climate.thermostat_kuche_heating:
+      hvac_modes:
+      - heat
+      min_temp: 4
+      max_temp: 28
+      current_temperature: 24.3
+      temperature: 21
+      friendly_name: Thermostat Küche
+      supported_features: 1
+      state: heat
+    climate.thermostat_schlafzimmer_heating:
+      hvac_modes:
+      - heat
+      min_temp: 4
+      max_temp: 28
+      current_temperature: 22.9
+      temperature: 18
+      friendly_name: Thermostat Schlafzimmer
+      supported_features: 1
+      state: heat
+  icon: mdi:temperature-celsius
+  metadata: {}
+- id: '1668377943697'
+  name: Leaving Home
+  entities:
+    light.schlafzimmer_nachttisch:
+      supported_color_modes:
+      - brightness
+      off_with_transition: false
+      off_brightness: 3
+      friendly_name: LAMPE:Schlafzimmer_Nachttisch
+      supported_features: 40
+      state: 'off'
+    light.buero_deckenleuchte:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness: 254
+      friendly_name: LAMPE:Büro_Deckenleuchte
+      supported_features: 40
+      state: 'off'
+    light.buero_schreibtisch:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4000
+      min_mireds: 250
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness: 254
+      friendly_name: LAMPE:Büro_Schreibtisch
+      supported_features: 40
+      state: 'off'
+    light.bad_deckenleuchte:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness: 128
+      friendly_name: LAMPE:Bad_Deckenleuchte
+      supported_features: 40
+      state: 'off'
+    light.kueche_deckenleuchte:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness: 254
+      friendly_name: LAMPE:Küche_Deckenleuchte
+      supported_features: 40
+      state: 'off'
+    light.wohnzimmer_deckenleuchte:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness: 254
+      friendly_name: LAMPE:Wohnzimmer_Deckenleuchte
+      supported_features: 40
+      state: 'off'
+    light.lampe_wohnzimmer_stehleuchte_level_light_color_on_off:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness: 254
+      friendly_name: LAMPE:Wohnzimmer_Stehleuchte
+      supported_features: 40
+      state: 'off'
+    light.wohnzimmer_tv_links:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - xy
+      off_with_transition: false
+      off_brightness: 254
+      friendly_name: LAMPE:Wohnzimmer_TV_links
+      supported_features: 44
+      state: 'off'
+    light.wohnzimmer_tv_oben:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - xy
+      off_with_transition: false
+      off_brightness: 254
+      friendly_name: LAMPE:Wohnzimmer_TV_oben
+      supported_features: 44
+      state: 'off'
+    light.wohnzimmer_tv_rechts:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - xy
+      off_with_transition: false
+      off_brightness: 254
+      friendly_name: LAMPE:Wohnzimmer_TV_rechts
+      supported_features: 44
+      state: 'off'
+    media_player.sony_bravia_tv:
+      source_list:
+      - HDMI 1
+      - HDMI 2
+      - HDMI 3/ARC
+      - HDMI 4
+      - AV 1
+      - AV 2/Component
+      - PlayStation 4
+      - YouTube
+      - Twitch
+      - Prime Video
+      - Netflix
+      - Disney+
+      - AirScreen
+      - Spotify
+      - Vimeo
+      - ZDFmediathek
+      - ProSieben
+      - ProSieben MAXX
+      - SAT.1
+      - TVNOW
+      - ARD Mediathek
+      device_class: tv
+      friendly_name: Sony Fernseher
+      supported_features: 23997
+      icon: hass:television
+      state: 'off'
+    remote.sony_bravia_tv:
+      friendly_name: Sony Fernseher
+      supported_features: 0
+      state: 'off'
+    light.flur_deckenleuchte:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - xy
+      off_with_transition: false
+      off_brightness: 254
+      friendly_name: LAMPE:Flur_Deckenleuchte
+      supported_features: 44
+      state: 'off'
+  metadata: {}
+- id: '1670118495624'
+  name: Wohnzimmer aus
+  entities:
+    light.wohnzimmer_tv_links:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - xy
+      off_with_transition: false
+      off_brightness: 254
+      friendly_name: LAMPE:Wohnzimmer_TV_links
+      supported_features: 44
+      state: 'off'
+    light.wohnzimmer_tv_oben:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - xy
+      off_with_transition: false
+      off_brightness: 254
+      friendly_name: LAMPE:Wohnzimmer_TV_oben
+      supported_features: 44
+      state: 'off'
+    light.wohnzimmer_tv_rechts:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - xy
+      off_with_transition: false
+      off_brightness: 254
+      friendly_name: LAMPE:Wohnzimmer_TV_rechts
+      supported_features: 44
+      state: 'off'
+    light.wohnzimmer_deckenleuchte:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness: 254
+      friendly_name: LAMPE:Wohnzimmer_Deckenleuchte
+      supported_features: 40
+      state: 'off'
+    light.lampe_wohnzimmer_stehleuchte_level_light_color_on_off:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness: 254
+      friendly_name: LAMPE:Wohnzimmer_Stehleuchte
+      supported_features: 40
+      state: 'off'
+  metadata: {}
+- id: '1670221409754'
+  name: Büro 19 Grad
+  entities:
+    climate.thermostat_buro_nord:
+      hvac_modes:
+      - heat
+      min_temp: 4
+      max_temp: 35
+      current_temperature: 18.9
+      temperature: 19
+      friendly_name: Thermostat Büro Nord
+      supported_features: 1
+      state: heat
+    climate.thermostat_buro_sud:
+      hvac_modes:
+      - heat
+      min_temp: 4
+      max_temp: 35
+      current_temperature: 19.2
+      temperature: 19
+      friendly_name: Thermostat Büro Süd
+      supported_features: 1
+      state: heat
+  metadata: {}
+  icon: mdi:temperature-celsius
+- id: '1670223272158'
+  name: Büro 4 Grad
+  entities:
+    climate.thermostat_buro_nord:
+      hvac_modes:
+      - heat
+      min_temp: 7
+      max_temp: 35
+      current_temperature: 19
+      temperature: 4
+      friendly_name: Thermostat Büro Nord
+      supported_features: 1
+      state: heat
+    climate.thermostat_buro_sud:
+      hvac_modes:
+      - heat
+      min_temp: 7
+      max_temp: 35
+      current_temperature: 19
+      temperature: 4
+      friendly_name: Thermostat Büro Süd
+      supported_features: 1
+      state: heat
+  metadata: {}
+  icon: mdi:temperature-celsius
+- id: '1670223291445'
+  name: Büro 21 Grad
+  entities:
+    climate.thermostat_buro_nord:
+      hvac_modes:
+      - heat
+      min_temp: 7
+      max_temp: 35
+      current_temperature: 19
+      temperature: 21
+      friendly_name: Thermostat Büro Nord
+      supported_features: 1
+      state: heat
+    climate.thermostat_buro_sud:
+      hvac_modes:
+      - heat
+      min_temp: 7
+      max_temp: 35
+      current_temperature: 19
+      temperature: 21
+      friendly_name: Thermostat Büro Süd
+      supported_features: 1
+      state: heat
+  metadata: {}
+  icon: mdi:temperature-celsius
+- id: '1670223664801'
+  name: Coming Home
+  entities:
+    light.schlafzimmer_nachttisch:
+      supported_color_modes:
+      - brightness
+      off_with_transition: false
+      off_brightness: 3
+      friendly_name: LAMPE:Schlafzimmer_Nachttisch
+      supported_features: 40
+      state: 'off'
+    light.buero_deckenleuchte:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness: 128
+      friendly_name: LAMPE:Büro_Deckenleuchte
+      supported_features: 40
+      state: 'off'
+    light.buero_schreibtisch:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4000
+      min_mireds: 250
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness: 41
+      friendly_name: LAMPE:Büro_Schreibtisch
+      supported_features: 40
+      state: 'off'
+    light.bad_deckenleuchte:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness: 128
+      friendly_name: LAMPE:Bad_Deckenleuchte
+      supported_features: 40
+      state: 'off'
+    light.kueche_deckenleuchte:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness: 254
+      friendly_name: LAMPE:Küche_Deckenleuchte
+      supported_features: 40
+      state: 'off'
+    light.wohnzimmer_deckenleuchte:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 454
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness: 254
+      friendly_name: LAMPE:Wohnzimmer_Deckenleuchte
+      supported_features: 40
+      state: 'off'
+    light.lampe_wohnzimmer_stehleuchte_level_light_color_on_off:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness:
+      friendly_name: LAMPE:Wohnzimmer_Stehleuchte
+      supported_features: 40
+      color_mode: color_temp
+      brightness: 254
+      color_temp_kelvin: 2070
+      color_temp: 483
+      hs_color:
+      - 30.298
+      - 90.872
+      rgb_color:
+      - 255
+      - 140
+      - 23
+      xy_color:
+      - 0.592
+      - 0.385
+      state: 'on'
+    light.wohnzimmer_tv_links:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - xy
+      off_with_transition: false
+      off_brightness:
+      friendly_name: LAMPE:Wohnzimmer_TV_links
+      supported_features: 44
+      color_mode: xy
+      brightness: 254
+      hs_color:
+      - 311.268
+      - 83.529
+      rgb_color:
+      - 255
+      - 42
+      - 215
+      xy_color:
+      - 0.437034
+      - 0.185031
+      state: 'on'
+    light.wohnzimmer_tv_oben:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - xy
+      off_with_transition: false
+      off_brightness:
+      friendly_name: LAMPE:Wohnzimmer_TV_oben
+      supported_features: 44
+      color_mode: xy
+      brightness: 254
+      hs_color:
+      - 159.726
+      - 85.882
+      rgb_color:
+      - 36
+      - 255
+      - 181
+      xy_color:
+      - 0.164187
+      - 0.4748
+      state: 'on'
+    light.wohnzimmer_tv_rechts:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - xy
+      off_with_transition: false
+      off_brightness:
+      friendly_name: LAMPE:Wohnzimmer_TV_rechts
+      supported_features: 44
+      color_mode: xy
+      brightness: 254
+      hs_color:
+      - 240.311
+      - 75.686
+      rgb_color:
+      - 63
+      - 62
+      - 255
+      xy_color:
+      - 0.153704
+      - 0.067567
+      state: 'on'
+    media_player.sony_bravia_tv:
+      source_list:
+      - HDMI 1
+      - HDMI 2
+      - HDMI 3/ARC
+      - HDMI 4
+      - AV 1
+      - AV 2/Component
+      - PlayStation 4
+      - YouTube
+      - Twitch
+      - Prime Video
+      - Netflix
+      - Disney+
+      - AirScreen
+      - Spotify
+      - Vimeo
+      - ZDFmediathek
+      - ProSieben
+      - ProSieben MAXX
+      - SAT.1
+      - TVNOW
+      - ARD Mediathek
+      device_class: tv
+      friendly_name: Sony Fernseher
+      supported_features: 23997
+      icon: hass:television
+      volume_level: 0.1
+      is_volume_muted: false
+      media_content_type: app
+      media_title: Smart TV
+      state: playing
+    remote.sony_bravia_tv:
+      friendly_name: Sony Fernseher
+      supported_features: 0
+      state: 'on'
+  metadata: {}

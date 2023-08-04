@@ -1,0 +1,901 @@
+- id: '1609855581140'
+  alias: Terrarium LED Ein
+  description: Schaltet Terrarium LED abhängig von Sonnenaufgang ein.
+  trigger:
+  - platform: sun
+    event: sunrise
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 0a20cbcd81a3e9c986fa2c17e600c4c3
+    entity_id: switch.steckdose_terrarium_led_switch
+    domain: switch
+  mode: single
+- id: '1609855625612'
+  alias: Terrarium LED Aus
+  description: Schaltet Terrarium LED abhängig von Sonnenuntergang aus.
+  trigger:
+  - platform: sun
+    event: sunset
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 0a20cbcd81a3e9c986fa2c17e600c4c3
+    entity_id: switch.steckdose_terrarium_led_switch
+    domain: switch
+  mode: single
+- id: '1609855683148'
+  alias: Terrarium Spot Ein
+  description: ''
+  trigger:
+  - platform: time
+    at: '13:00'
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 2a2e881128024c9ea436b70c879890f3
+    entity_id: switch.steckdose_terrarium_rechts
+    domain: switch
+  mode: single
+- id: '1609855726166'
+  alias: Terrarium Spot Aus
+  description: ''
+  trigger:
+  - platform: time
+    at: '15:00'
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 2a2e881128024c9ea436b70c879890f3
+    entity_id: switch.steckdose_terrarium_rechts
+    domain: switch
+  mode: single
+- id: '1610837913916'
+  alias: Akkuwarnung Hue Schalter Bad
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.rwl021_9_battery
+    below: '5'
+  condition: []
+  action:
+  - device_id: f866079bb2ceb01ea53467a2e5960b47
+    domain: mobile_app
+    type: notify
+    message: Schalter „Bad“ noch 5%
+    title: ''
+  mode: single
+- id: '1610838125609'
+  alias: Akkuwarnung Hue Schalter Schlafzimmer
+  description: ''
+  trigger:
+  - platform: numeric_state
+    below: '5'
+    entity_id: sensor.rwl021_8_battery
+  condition: []
+  action:
+  - device_id: f866079bb2ceb01ea53467a2e5960b47
+    domain: mobile_app
+    type: notify
+    message: Schalter „Schlafzimmer“ noch 5%
+  mode: single
+- id: '1610838198236'
+  alias: Akkuwarnung Hue Schalter Flur
+  description: ''
+  trigger:
+  - platform: numeric_state
+    below: '5'
+    entity_id: sensor.switch_6_battery
+  condition: []
+  action:
+  - device_id: f866079bb2ceb01ea53467a2e5960b47
+    domain: mobile_app
+    type: notify
+    message: Schalter „Flur“ noch 5%
+  mode: single
+- id: '1610838260356'
+  alias: Akkuwarnung Hue Schalter Wohnzimmer
+  description: ''
+  trigger:
+  - platform: numeric_state
+    below: '5'
+    entity_id: sensor.rwl021_11_battery
+  condition: []
+  action:
+  - device_id: f866079bb2ceb01ea53467a2e5960b47
+    domain: mobile_app
+    type: notify
+    message: Schalter „Wohnzimmer“ noch 5%
+  mode: single
+- id: '1613842495585'
+  alias: Akkuwarnung Thermostat Wohnzimmer
+  description: ''
+  trigger:
+  - platform: numeric_state
+    below: '10'
+    entity_id: sensor.thermostat_wohnzimmer_battery_level
+  condition: []
+  action:
+  - device_id: f866079bb2ceb01ea53467a2e5960b47
+    domain: mobile_app
+    type: notify
+    message: Thermostat "Wohnzimmer" noch 10%
+    title: ''
+  mode: single
+- id: '1613842563196'
+  alias: Akkuwarnung Thermostat Küche
+  description: ''
+  trigger:
+  - platform: numeric_state
+    below: '10'
+    entity_id: sensor.thermostat_kuche_battery_level
+  condition: []
+  action:
+  - device_id: f866079bb2ceb01ea53467a2e5960b47
+    domain: mobile_app
+    type: notify
+    message: Thermostat "Küche" noch 10%
+  mode: single
+- id: '1613842638582'
+  alias: Akkuwarnung Thermostat Bad
+  description: ''
+  trigger:
+  - platform: numeric_state
+    below: '10'
+    entity_id: sensor.thermostat_bad_battery_level
+  condition: []
+  action:
+  - device_id: f866079bb2ceb01ea53467a2e5960b47
+    domain: mobile_app
+    type: notify
+    message: Thermostat "Bad" noch 10%
+  mode: single
+- id: '1613842668240'
+  alias: Akkuwarnung Thermostat Schlafzimmer
+  description: ''
+  trigger:
+  - platform: numeric_state
+    below: '10'
+    entity_id: sensor.thermostat_schlafzimmer_battery_level
+  condition: []
+  action:
+  - device_id: f866079bb2ceb01ea53467a2e5960b47
+    domain: mobile_app
+    type: notify
+    message: Thermostat "Schlafzimmer" noch 10%
+  mode: single
+- id: '1634660968227'
+  alias: ' Alarm Temperatur Server Rack'
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.bme280_01_temperature
+    above: '35'
+  condition: []
+  action:
+  - service: notify.mobile_app_fabians_iphone
+    data:
+      message: 'Server-Rack: Temperatur über 35°C'
+      title: Alarm
+  - service: scene.turn_on
+    target:
+      entity_id: scene.alarm_beleuchtung
+    metadata: {}
+  mode: single
+- id: '1644201281197'
+  alias: Sirene Oma
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: siren.sirene
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  condition: []
+  action:
+  - device_id: f866079bb2ceb01ea53467a2e5960b47
+    domain: mobile_app
+    type: notify
+    message: Sirene hat ausgelöst!
+    title: Alarmanlage Oma
+  mode: single
+- id: '1647300509996'
+  alias: Bewegung erkannt Flur
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: 7947a1ba73351cface7917e8a4447b5d
+    entity_id: binary_sensor.bewegungsmelder_flur_iaszone
+    domain: binary_sensor
+  condition:
+  - condition: sun
+    after: sunset
+    before: sunrise
+  action:
+  - type: turn_on
+    device_id: ee2114136ac2db434919e9ea7cd401c4
+    entity_id: light.flur_deckenleuchte
+    domain: light
+  - delay:
+      hours: 0
+      minutes: 3
+      seconds: 0
+      milliseconds: 0
+  - type: turn_off
+    device_id: ee2114136ac2db434919e9ea7cd401c4
+    entity_id: light.flur_deckenleuchte
+    domain: light
+  mode: restart
+- id: '1647468638367'
+  alias: Fenster auf Bad
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: a41ea51262c979bdb5f8e25de5d7f8fc
+    entity_id: binary_sensor.bad_fensterkontakt
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+  condition: []
+  action:
+  - service: input_text.set_value
+    target:
+      entity_id: input_text.luften_bad_temperatur
+    data:
+      entity_id: climate.thermostat_bad_heating
+      value: '{{states.climate.thermostat_bad_heating.attributes.temperature}}'
+  - service: climate.set_temperature
+    data:
+      temperature: 4
+    target:
+      entity_id: climate.thermostat_bad_heating
+  - delay:
+      hours: 0
+      minutes: 30
+      seconds: 0
+      milliseconds: 0
+  - if:
+    - type: is_open
+      condition: device
+      device_id: a41ea51262c979bdb5f8e25de5d7f8fc
+      entity_id: binary_sensor.bad_fensterkontakt
+      domain: binary_sensor
+    then:
+    - device_id: fc45547443688eced377f0d63b9adfe0
+      domain: mobile_app
+      type: notify
+      message: Fenster im Bad schließen
+      title: Lüften beendet!
+    else:
+    - stop: ''
+  mode: single
+- id: '1647469056754'
+  alias: Fenster zu Bad
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: a41ea51262c979bdb5f8e25de5d7f8fc
+    entity_id: binary_sensor.bad_fensterkontakt
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+  condition: []
+  action:
+  - service: climate.set_temperature
+    data:
+      temperature: '{{states.input_text.luften_bad_temperatur.state}}'
+    target:
+      entity_id: climate.thermostat_bad_heating
+  mode: single
+- id: '1647469711401'
+  alias: Akkuwarnung Hue Schalter Büro
+  description: ''
+  trigger:
+  - platform: numeric_state
+    below: '5'
+    entity_id: sensor.rwl022_4_battery
+  condition: []
+  action:
+  - device_id: f866079bb2ceb01ea53467a2e5960b47
+    domain: mobile_app
+    type: notify
+    message: Schalter „Büro“ noch 5%
+  mode: single
+- id: '1647469778121'
+  alias: Akkuwarnung Fensterkontakt Bad
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.door_window_contact_battery_level
+    below: '5'
+  condition: []
+  action:
+  - device_id: f866079bb2ceb01ea53467a2e5960b47
+    domain: mobile_app
+    type: notify
+    message: Fensterkontakt „Bad“ noch 5%
+    title: ''
+  mode: single
+- id: '1647469867573'
+  alias: Akkuwarnung Bewegungsmelder Flur
+  description: ''
+  trigger:
+  - platform: numeric_state
+    below: '5'
+    entity_id: sensor.bewegungsmelder_flur_battery
+  condition: []
+  action:
+  - device_id: f866079bb2ceb01ea53467a2e5960b47
+    domain: mobile_app
+    type: notify
+    message: Bewegungsmelder „Flur“ noch 5%
+  mode: single
+- id: '1648599387362'
+  alias: Akkuwarnung Thermostat Büro Nord
+  description: ''
+  trigger:
+  - platform: numeric_state
+    below: '10'
+    entity_id: sensor.thermostat_buro_nord_battery_level
+  condition: []
+  action:
+  - device_id: f866079bb2ceb01ea53467a2e5960b47
+    domain: mobile_app
+    type: notify
+    message: Thermostat "Büro Nord" noch 10%
+  mode: single
+- id: '1648599405732'
+  alias: Akkuwarnung Thermostat Büro Süd
+  description: ''
+  trigger:
+  - platform: numeric_state
+    below: '10'
+    entity_id: sensor.thermostat_buro_sud_battery_level
+  condition: []
+  action:
+  - device_id: f866079bb2ceb01ea53467a2e5960b47
+    domain: mobile_app
+    type: notify
+    message: Thermostat "Büro Süd" noch 10%
+  mode: single
+- id: '1649971299537'
+  alias: Schalter Küche
+  description: ''
+  use_blueprint:
+    path: niro1987/zha_ikea_tradfri_5button_remote_custom.yaml
+    input:
+      remote: 7eb9d1d20c9a7565379adb42f14f9af1
+      power_short:
+      - type: toggle
+        device_id: 80f7bd31d858cf416cbfd5ddc121a6f6
+        entity_id: light.kueche_deckenleuchte
+        domain: light
+      dimup_short:
+      - device_id: 80f7bd31d858cf416cbfd5ddc121a6f6
+        domain: light
+        entity_id: light.kueche_deckenleuchte
+        type: brightness_increase
+      dimdown_short:
+      - device_id: 80f7bd31d858cf416cbfd5ddc121a6f6
+        domain: light
+        entity_id: light.kueche_deckenleuchte
+        type: brightness_decrease
+      dimup_long: []
+      colorup_short: []
+- id: '1658705855119'
+  alias: Kuma Alert Nextcloud
+  description: ''
+  trigger:
+  - platform: webhook
+    webhook_id: kuma-alert-nextcloud-dxeeOxOK-_FaJHw1fw2coVoV
+  condition: []
+  action:
+  - service: notify.mobile_app_fabians_iphone_13
+    data:
+      title: Alert!
+      message: '⚠️ Nextcloud: Downtime detected! ⚠️'
+  mode: single
+- id: '1658707008550'
+  alias: Kuma Alert Nextcloud FGK
+  description: ''
+  trigger:
+  - platform: webhook
+    webhook_id: kuma-alert-nextcloud-fgk-ZWHbxOLE0XkmyRdRM8yP5OgF
+  condition: []
+  action:
+  - service: notify.mobile_app_fabians_iphone_13
+    data:
+      message: '⚠️ Nextcloud FGK: Downtime detected! ⚠️'
+      title: Alert!
+  mode: single
+- id: '1658707361184'
+  alias: Kuma Alert Rahmenschuhe Webseite
+  description: ''
+  trigger:
+  - platform: webhook
+    webhook_id: kuma-alert-rahmenschuhe-webseite-TyaCa5toID9h1PgSENl7hjfE
+  condition: []
+  action:
+  - service: notify.mobile_app_fabians_iphone_13
+    data:
+      title: Alert!
+      message: '⚠️ rahmenschuhe.de: Downtime detected! ⚠️'
+  mode: single
+- id: '1658708750909'
+  alias: Kuma Alert Proxmox
+  description: ''
+  trigger:
+  - platform: webhook
+    webhook_id: kuma-alert-proxmox-S0Qvdy-OI4jeNAzgm5VY7ygM
+  condition: []
+  action:
+  - service: notify.mobile_app_fabians_iphone_13
+    data:
+      message: '⚠️ Proxmox: Downtime detected! ⚠️'
+      title: Alert!
+  mode: single
+- id: '1658709142230'
+  alias: Kuma Alert NGINX
+  description: ''
+  trigger:
+  - platform: webhook
+    webhook_id: kuma-alert-nginx-P0nM9nMMehyfxHfBhNICnUcG
+  condition: []
+  action:
+  - service: notify.mobile_app_fabians_iphone_13
+    data:
+      message: '⚠️ NGINX: Downtime detected! ⚠️'
+      title: Alert!
+  mode: single
+- id: '1661798935396'
+  alias: Test Schalter Schlafzimmer
+  description: ''
+  use_blueprint:
+    path: Xelloss99/zha-ikea-tradfri-on-off-switch.yaml
+    input:
+      remote: 21a36639ff8bfafab8b79fb8c3c6a95a
+      button_on_short:
+      - type: light.turn_on
+        device_id: 94367a30a9364ee8e3ddebb0a5f8c8d8
+        entity_id: light.schlafzimmer_deckenleuchte
+        domain: light
+      button_off_short:
+      - type: light.turn_off
+        device_id: 94367a30a9364ee8e3ddebb0a5f8c8d8
+        entity_id: light.schlafzimmer_deckenleuchte
+        domain: light
+- id: '1661799835995'
+  alias: Schlafzimmer Schalter an
+  description: ''
+  trigger:
+  - device_id: 21a36639ff8bfafab8b79fb8c3c6a95a
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 94367a30a9364ee8e3ddebb0a5f8c8d8
+    entity_id: light.schlafzimmer_deckenleuchte
+    domain: light
+  mode: single
+- id: '1661800143353'
+  alias: Schlafzimmer Schalter aus
+  description: ''
+  trigger:
+  - device_id: 21a36639ff8bfafab8b79fb8c3c6a95a
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_off
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 94367a30a9364ee8e3ddebb0a5f8c8d8
+    entity_id: light.schlafzimmer_deckenleuchte
+    domain: light
+  mode: single
+- id: '1661800223286'
+  alias: Wohnzimmer Schalter an
+  description: ''
+  trigger:
+  - device_id: 5d6f552683900ff8f49f6c987b237a42
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 96f4fbb2f8fae8f19c9078837767db30
+    entity_id: light.wohnzimmer_deckenleuchte
+    domain: light
+  mode: single
+- id: '1661800247058'
+  alias: Wohnzimmer Schalter aus
+  description: ''
+  trigger:
+  - device_id: 5d6f552683900ff8f49f6c987b237a42
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_off
+  condition: []
+  action:
+  - service: scene.turn_on
+    data: {}
+    target:
+      entity_id: scene.wohnzimmer_aus
+  mode: single
+- id: '1662233499669'
+  alias: 'Bad Schalter an '
+  description: ''
+  trigger:
+  - device_id: c5981a231072ec7fe94c0994421cbacc
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 9b13d17edf71c0ceb5bdc909fbc993c7
+    entity_id: light.bad_deckenleuchte
+    domain: light
+    brightness_pct: 50
+  mode: single
+- id: '1662233518374'
+  alias: Bad Schalter aus
+  description: ''
+  trigger:
+  - device_id: c5981a231072ec7fe94c0994421cbacc
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_off
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 9b13d17edf71c0ceb5bdc909fbc993c7
+    entity_id: light.bad_deckenleuchte
+    domain: light
+  mode: single
+- id: '1662233556899'
+  alias: Bad Schalter heller
+  description: ''
+  trigger:
+  - device_id: c5981a231072ec7fe94c0994421cbacc
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: dim_up
+  condition: []
+  action:
+  - device_id: 9b13d17edf71c0ceb5bdc909fbc993c7
+    domain: light
+    entity_id: light.bad_deckenleuchte
+    type: brightness_increase
+  mode: single
+- id: '1662233581268'
+  alias: Bad Schalter dunkler
+  description: ''
+  trigger:
+  - device_id: c5981a231072ec7fe94c0994421cbacc
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: dim_down
+  condition: []
+  action:
+  - device_id: 9b13d17edf71c0ceb5bdc909fbc993c7
+    domain: light
+    entity_id: light.bad_deckenleuchte
+    type: brightness_decrease
+  mode: single
+- id: '1668104313154'
+  alias: Staubsauger Routine
+  description: Lässt den Staubsauger um 10 Uhr losfahren.
+  trigger:
+  - platform: time
+    at: '10:00:00'
+  - platform: webhook
+    webhook_id: staubsauger-routine-pSrYLDZo1YUjVB8XT20_JLUm
+    allowed_methods:
+    - POST
+    - PUT
+    local_only: true
+  condition: []
+  action:
+  - device_id: 22b18177982dc2224fa200d03f149127
+    domain: vacuum
+    entity_id: vacuum.valetudo_purefrugaltermite
+    type: clean
+  mode: single
+- id: '1668203537518'
+  alias: Test
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: notify.mobile_app_fabians_iphone_13
+    data:
+      message: Gedrückt halten für Auswahl.
+      title: Test Titel
+      data:
+        actions:
+        - action: 1
+          title: Nummer 1
+        - action: 2
+          title: Nummer 2
+        - action: 3
+          title: Nummer 3
+          destructive: true
+  mode: single
+- id: '1668377711666'
+  alias: Leaving Home
+  description: ''
+  trigger:
+  - platform: device
+    device_id: fc45547443688eced377f0d63b9adfe0
+    domain: device_tracker
+    entity_id: device_tracker.fabians_iphone_13
+    type: leaves
+    zone: zone.home
+  condition: []
+  action:
+  - service: scene.turn_on
+    target:
+      entity_id: scene.leaving_home
+    metadata: {}
+  mode: single
+- id: '1668535452457'
+  alias: Benachrichtigung Staubsauger
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 22b18177982dc2224fa200d03f149127
+    domain: vacuum
+    entity_id: vacuum.valetudo_purefrugaltermite
+    type: docked
+  condition: []
+  action:
+  - service: notify.mobile_app_fabians_iphone_13
+    data:
+      message: Reinigungsvorgang beendet.
+      title: It‘s clean again!
+  mode: single
+- id: '1670121725905'
+  alias: Test HomePod
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: media_player.play_media
+    target:
+      entity_id: media_player.homepod_schlafzimmer
+    data:
+      media_content_id: media-source://radio_browser/0cd06e2c-74b2-4724-9df5-6642a641f749
+      media_content_type: audio/aac
+    metadata:
+      title: DASDING
+      thumbnail: https://dasding.de/assets/dasding/apple-touch-icon-120x120.png
+      media_class: music
+      children_media_class:
+      navigateIds:
+      - {}
+      - media_content_type: app
+        media_content_id: media-source://radio_browser
+      - media_content_type: music
+        media_content_id: media-source://radio_browser/country/DE
+  mode: single
+- id: '1670239255758'
+  alias: Test Test
+  description: ''
+  trigger:
+  - device_id: bbe96cf77ea855030df7fcbc504b40d3
+    domain: zha
+    platform: device
+    type: device_rotated
+    subtype: left
+  condition: []
+  action:
+  - device_id: a744ce073ffd0d3e5fa3c7160ed4726b
+    domain: light
+    entity_id: light.lampe_wohnzimmer_stehleuchte_level_light_color_on_off
+    type: brightness_decrease
+  mode: single
+- id: '1670360519503'
+  alias: Schreibtischlampe Schalter
+  description: ''
+  trigger:
+  - device_id: bbe96cf77ea855030df7fcbc504b40d3
+    domain: zha
+    platform: device
+    type: device_rotated
+    subtype: right
+  condition: []
+  action:
+  - device_id: 270d009fb351cb5b7f135718729755b2
+    domain: light
+    entity_id: light.buero_schreibtisch
+    type: brightness_increase
+  mode: single
+- id: '1670360547336'
+  alias: Schreibtischlampe Drehschalter dunkler
+  description: ''
+  trigger:
+  - device_id: bbe96cf77ea855030df7fcbc504b40d3
+    domain: zha
+    platform: device
+    type: device_rotated
+    subtype: left
+  condition: []
+  action:
+  - device_id: 270d009fb351cb5b7f135718729755b2
+    domain: light
+    entity_id: light.buero_schreibtisch
+    type: brightness_decrease
+  mode: single
+- id: '1670360637847'
+  alias: Schreibtischlampe Drehschalter Ein/Aus
+  description: ''
+  trigger:
+  - device_id: bbe96cf77ea855030df7fcbc504b40d3
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+  condition: []
+  action:
+  - type: toggle
+    device_id: 270d009fb351cb5b7f135718729755b2
+    entity_id: light.buero_schreibtisch
+    domain: light
+  mode: single
+- id: '1671635984029'
+  alias: Lichtschalter Büro
+  description: ''
+  trigger:
+  - device_id: 93823c7d20fd41ec7a501565cfc95324
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+  condition: []
+  action:
+  - type: toggle
+    device_id: 74381c1320960db4b24d303ac7b6610e
+    entity_id: light.buero_deckenleuchte
+    domain: light
+  mode: single
+- id: '1672343749244'
+  alias: Lichtschalter Bad
+  description: ''
+  trigger:
+  - device_id: a61a178a5032ed75c6013e08c5c29e22
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+  condition: []
+  action:
+  - type: toggle
+    device_id: 9b13d17edf71c0ceb5bdc909fbc993c7
+    entity_id: light.bad_deckenleuchte
+    domain: light
+  mode: single
+- id: '1676996343966'
+  alias: Rauchmelder Wohnzimmer
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.shelly_smoke_01_smoke
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: scene.turn_on
+    target:
+      entity_id: scene.alarm_beleuchtung
+    metadata: {}
+  - service: cover.open_cover
+    data: {}
+    target:
+      entity_id: cover.rolladen_alle
+  - device_id: fc45547443688eced377f0d63b9adfe0
+    domain: mobile_app
+    type: notify
+    message: Rauchmelder Wohnzimmer hat ausgelöst!
+    title: 'Dringend! '
+  - device_id: 87d29b27b5c800af0275ea1af78b78e7
+    domain: mobile_app
+    type: notify
+    title: 'Dringend! '
+    message: Rauchmelder Wohnzimmer hat ausgelöst!
+  mode: single
+- id: '1679148976128'
+  alias: Bewegung erkannt Bad
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: ddbc085e2a398e2c137c12fb38b5ebb6
+    entity_id: binary_sensor.bewegungsmelder_bad_iaszone
+    domain: binary_sensor
+  condition:
+  - condition: sun
+    after: sunset
+    before: sunrise
+    enabled: true
+  action:
+  - type: turn_on
+    device_id: 9b13d17edf71c0ceb5bdc909fbc993c7
+    entity_id: light.bad_deckenleuchte
+    domain: light
+  mode: restart
+- id: '1680348821533'
+  alias: Bewegung beendet Bad
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.bewegungsmelder_bad_iaszone
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+  condition:
+  - condition: device
+    type: is_on
+    device_id: 9b13d17edf71c0ceb5bdc909fbc993c7
+    entity_id: light.bad_deckenleuchte
+    domain: light
+  action:
+  - type: turn_off
+    device_id: 9b13d17edf71c0ceb5bdc909fbc993c7
+    entity_id: light.bad_deckenleuchte
+    domain: light
+  mode: single
+- id: '1688338571310'
+  alias: Rolladen Sonnenaufgang
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: 0
+  condition: []
+  action:
+  - service: cover.close_cover
+    data: {}
+    target:
+      entity_id:
+      - cover.rolladen_schlafzimmer
+      - cover.rolladen_buro
+      - cover.rolladen_wohnzimmer
+      - cover.rolladen_bad
+  mode: single
+- id: '1688415289645'
+  alias: Automatic Backups
+  description: ''
+  trigger:
+  - platform: time
+    at: 04:00:00
+  condition: []
+  action:
+  - service: hassio.backup_full
+    data:
+      compressed: true
+  mode: single
