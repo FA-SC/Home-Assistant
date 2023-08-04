@@ -1,1 +1,1 @@
-# Home-Assistant-Config# Home-Assistant
+#This is my Home Assistant Configuration
