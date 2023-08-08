@@ -1,16 +1,25 @@
 # Example .gitignore file for your config dir.
 # An * ensures that everything will be ignored.
 *
+!*/
 # You can whitelist files/folders with !, these will not be ignored.
 !*.yaml
 !.gitignore
 !*.md
-!ui_lovelace_minimalist
+!ui-lovelace.yaml
 
 # Ignore folders.
 .storage
 .cloud
 .google.token
+.image
+.node-red
+.themes
+.tts
+.www
+.esphome
+.deps
+.blueprints
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml

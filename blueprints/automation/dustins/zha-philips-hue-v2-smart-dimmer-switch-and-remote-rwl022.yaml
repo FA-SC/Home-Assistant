@@ -1,0 +1,301 @@
+blueprint:
+  domain: automation
+  name: Philips Hue v1 Smart Dimmer Switch and Remote
+  description: Philips Hue v1 Smart Dimmer Switch and Remote (RWL021) using Zigbee Home Automation
+  input:
+    zha_device:
+      name: Philips Hue v1 Smart Dimmer Switch and Remote
+      description: List of available Philips Hue v2 Smart Dimmer Switch and Remote devices
+      selector:
+        device:
+          integration: zha
+          model: RWL021
+    Power_Press:
+      name: Power Press
+      description: Power button pressed
+      default: []
+      selector:
+        action: null
+    Power_Press2x:
+      name: Power Press 2x
+      description: Power button pressed 2x
+      default: []
+      selector:
+        action: null
+    Power_Press3x:
+      name: Power Press 3x
+      description: Power button pressed 3x
+      default: []
+      selector:
+        action: null
+    Power_Press4x:
+      name: Power Press 4x
+      description: Power button pressed 4x
+      default: []
+      selector:
+        action: null
+    Power_Press5x:
+      name: Power Press 5x
+      description: Power button pressed 5x
+      default: []
+      selector:
+        action: null
+    Power_Release:
+      name: Power Release
+      description: Power button released
+      default: []
+      selector:
+        action: null
+    Power_HoldPress:
+      name: Power Hold
+      description: Power button held down
+      default: []
+      selector:
+        action: null
+    Power_HoldRelease:
+      name: Power Hold Release
+      description: Power button released after held down
+      default: []
+      selector:
+        action: null
+    Up_Press:
+      name: Up Press
+      description: Up button pressed
+      default: []
+      selector:
+        action: null
+    Up_Press2x:
+      name: Up Press 2x
+      description: Up button pressed 2x
+      default: []
+      selector:
+        action: null
+    Up_Press3x:
+      name: Up Press 3x
+      description: Up button pressed 3x
+      default: []
+      selector:
+        action: null
+    Up_Press4x:
+      name: Up Press 4x
+      description: Up button pressed 4x
+      default: []
+      selector:
+        action: null
+    Up_Press5x:
+      name: Up Press 5x
+      description: Up button pressed 5x
+      default: []
+      selector:
+        action: null
+    Up_Release:
+      name: Up Release
+      description: Up button released
+      default: []
+      selector:
+        action: null
+    Up_HoldPress:
+      name: Up Hold
+      description: Up button held down
+      default: []
+      selector:
+        action: null
+    Up_HoldRelease:
+      name: Up Hold Release
+      description: Up button released after held down
+      default: []
+      selector:
+        action: null
+    Down_Press:
+      name: Down Press
+      description: Down button pressed
+      default: []
+      selector:
+        action: null
+    Down_Press2x:
+      name: Down Press 2x
+      description: Down button pressed 2x
+      default: []
+      selector:
+        action: null
+    Down_Press3x:
+      name: Down Press 3x
+      description: Down button pressed 3x
+      default: []
+      selector:
+        action: null
+    Down_Press4x:
+      name: Down Press 4x
+      description: Down button pressed 4x
+      default: []
+      selector:
+        action: null
+    Down_Press5x:
+      name: Down Press 5x
+      description: Down button pressed 5x
+      default: []
+      selector:
+        action: null
+    Down_Release:
+      name: Down Release
+      description: Down button released
+      default: []
+      selector:
+        action: null
+    Down_HoldPress:
+      name: Down Hold
+      description: Down button held down
+      default: []
+      selector:
+        action: null
+    Down_HoldRelease:
+      name: Down Hold Release
+      description: Down button released after held down
+      default: []
+      selector:
+        action: null
+    Off_Press:
+      name: Off Press
+      description: Off button pressed
+      default: []
+      selector:
+        action: null
+    Off_Press2x:
+      name: Off Press 2x
+      description: Off button pressed 2x
+      default: []
+      selector:
+        action: null
+    Off_Press3x:
+      name: Off Press 3x
+      description: Off button pressed 3x
+      default: []
+      selector:
+        action: null
+    Off_Press4x:
+      name: Off Press 4x
+      description: Off button pressed 4x
+      default: []
+      selector:
+        action: null
+    Off_Press5x:
+      name: Off Press 5x
+      description: Off button pressed 5x
+      default: []
+      selector:
+        action: null
+    Off_Release:
+      name: Off Release
+      description: Off button released
+      default: []
+      selector:
+        action: null
+    Off_HoldPress:
+      name: Off Hold
+      description: Off button held down
+      default: []
+      selector:
+        action: null
+    Off_HoldRelease:
+      name: Off Hold Release
+      description: Off button released after held down
+      default: []
+      selector:
+        action: null
+mode: single
+max_exceeded: silent
+variables:
+  device_id: !input "zha_device"
+trigger:
+  - platform: event
+    event_type: zha_event
+condition: "{{ trigger.event.data.device_id == device_id }}"
+action:
+  - variables:
+      button: "{{ trigger.event.data.args.button }}"
+      press_type: "{{ trigger.event.data.args.press_type }}"
+      command_type: "{{ trigger.event.data.command }}"
+  - service: logbook.log
+    data:
+      name: Button
+      message: "{{ button }}"
+  - service: logbook.log
+    data:
+      name: Press Type
+      message: "{{ press_type }}"
+  - service: logbook.log
+    data:
+      name: Device
+      message: "{{ zha_device }}"
+  - service: logbook.log
+    data:
+      name: Command
+      message: "{{ command_type }}"
+  - choose:
+      - conditions: '{{ command_type == "on_press" }}'
+        sequence: !input "Power_Press"
+      - conditions: '{{ command_type == "on_double_press" }}'
+        sequence: !input "Power_Press2x"
+      - conditions: '{{ command_type == "on_triple_press" }}'
+        sequence: !input "Power_Press3x"
+      - conditions: '{{ command_type == "on_quadruple_press" }}'
+        sequence: !input "Power_Press4x"
+      - conditions: '{{ command_type == "on_quintuple_press" }}'
+        sequence: !input "Power_Press5x"
+      - conditions: '{{ command_type == "on_short_release" }}'
+        sequence: !input "Power_Release"
+      - conditions: '{{ command_type == "on_hold" }}'
+        sequence: !input "Power_HoldPress"
+      - conditions: '{{ command_type == "on_long_release" }}'
+        sequence: !input "Power_HoldRelease"
+
+      - conditions: '{{ command_type == "up_press" }}'
+        sequence: !input "Up_Press"
+      - conditions: '{{ command_type == "up_double_press" }}'
+        sequence: !input "Up_Press2x"
+      - conditions: '{{ command_type == "up_triple_press" }}'
+        sequence: !input "Up_Press3x"
+      - conditions: '{{ command_type == "up_quadruple_press" }}'
+        sequence: !input "Up_Press4x"
+      - conditions: '{{ command_type == "up_quintuple_press" }}'
+        sequence: !input "Up_Press5x"
+      - conditions: '{{ command_type == "up_short_release" }}'
+        sequence: !input "Up_Release"
+      - conditions: '{{ command_type == "up_hold" }}'
+        sequence: !input "Up_HoldPress"
+      - conditions: '{{ command_type == "up_long_release" }}'
+        sequence: !input "Up_HoldRelease"
+
+      - conditions: '{{ command_type == "down_press" }}'
+        sequence: !input "Down_Press"
+      - conditions: '{{ command_type == "down_double_press" }}'
+        sequence: !input "Down_Press2x"
+      - conditions: '{{ command_type == "down_triple_press" }}'
+        sequence: !input "Down_Press3x"
+      - conditions: '{{ command_type == "down_quadruple_press" }}'
+        sequence: !input "Down_Press4x"
+      - conditions: '{{ command_type == "down_quintuple_press" }}'
+        sequence: !input "Down_Press5x"
+      - conditions: '{{ command_type == "down_short_release" }}'
+        sequence: !input "Down_Release"
+      - conditions: '{{ command_type == "down_hold" }}'
+        sequence: !input "Down_HoldPress"
+      - conditions: '{{ command_type == "down_long_release" }}'
+        sequence: !input "Down_HoldRelease"
+
+      - conditions: '{{ command_type == "off_press" }}'
+        sequence: !input "Off_Press"
+      - conditions: '{{ command_type == "off_double_press" }}'
+        sequence: !input "Off_Press2x"
+      - conditions: '{{ command_type == "off_triple_press" }}'
+        sequence: !input "Off_Press3x"
+      - conditions: '{{ command_type == "off_quadruple_press" }}'
+        sequence: !input "Off_Press4x"
+      - conditions: '{{ command_type == "off_quintuple_press" }}'
+        sequence: !input "Off_Press5x"
+      - conditions: '{{ command_type == "off_short_release" }}'
+        sequence: !input "Off_Release"
+      - conditions: '{{ command_type == "off_hold" }}'
+        sequence: !input "Off_HoldPress"
+      - conditions: '{{ command_type == "off_long_release" }}'
+        sequence: !input "Off_HoldRelease"

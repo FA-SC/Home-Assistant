@@ -1,0 +1,150 @@
+esphome:
+  name: "simu-remote"
+  libraries:
+    - EEPROM
+    - SPI
+    - SmartRC-CC1101-Driver-Lib@2.5.6
+    - Somfy_Remote_Lib@0.4.1
+  includes:
+    - somfy_secrets.h
+    - somfy_cover.h
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Example configuration entry
+logger:
+  level: DEBUG    
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "simu-remote"
+    password: "SGwKBiybLxlQ"
+
+#web_server:
+#  port: 80
+#  auth:
+#    username: tbd
+#    password: tbd
+
+captive_portal:
+
+sensor:
+  - platform: uptime
+    name: Uptime Sensor
+
+  - platform: wifi_signal
+    name: "WiFi Signal Sensor"
+
+cover:
+  - platform: custom
+    lambda: |-
+      auto somfy_remote = new SomfyESPRemote();
+      somfy_remote->add_cover("somfy", "wohnzimmer_nord", SOMFY_REMOTE_WOHNZIMMER_NORD);
+      somfy_remote->add_cover("somfy", "wohnzimmer_west", SOMFY_REMOTE_WOHNZIMMER_WEST);
+      somfy_remote->add_cover("somfy", "buro_nord", SOMFY_REMOTE_BURO_NORD);
+      somfy_remote->add_cover("somfy", "buro_sud", SOMFY_REMOTE_BURO_SUD);    
+      somfy_remote->add_cover("somfy", "schlafzimmer", SOMFY_REMOTE_SCHLAFZIMMER);     
+      somfy_remote->add_cover("somfy", "kuche", SOMFY_REMOTE_KUCHE);  
+      somfy_remote->add_cover("somfy", "bad", SOMFY_REMOTE_BAD);
+      App.register_component(somfy_remote);
+      return somfy_remote->covers;
+
+    covers:
+      - id: "somfy0"
+        name: "Rolladen Wohnzimmer West"
+      - id: "somfy1"
+        name: "Rolladen Wohnzimmer Nord"
+      - id: "somfy2"
+        name: "Rolladen Büro Nord"
+      - id: "somfy3"
+        name: "Rolladen Büro Süd"   
+      - id: "somfy4"
+        name: "Rolladen Schlafzimmer"                     
+      - id: "somfy5"
+        name: "Rolladen Küche"    
+      - id: "somfy6"
+        name: "Rolladen Bad"    
+
+switch:
+  - platform: template
+    name: "PROG WOHNZIMMER WEST"
+    turn_on_action:
+      - lambda: |-
+          ((SomfyESPCover*)id(somfy0))->program();
+  - platform: template
+    name: "STOP WOHNZIMMER WEST"
+    turn_on_action:
+      - lambda: |-
+          ((SomfyESPCover*)id(somfy0))->make_call().set_command_stop().perform();
+  - platform: template
+    name: "PROG WOHNZIMMER NORD"
+    turn_on_action:
+      - lambda: |-
+          ((SomfyESPCover*)id(somfy1))->program();
+  - platform: template
+    name: "STOP WOHNZIMMER NORD"
+    turn_on_action:
+      - lambda: |-
+          ((SomfyESPCover*)id(somfy1))->make_call().set_command_stop().perform();
+  - platform: template
+    name: "PROG BÜRO NORD"
+    turn_on_action:
+      - lambda: |-
+          ((SomfyESPCover*)id(somfy2))->program();
+  - platform: template
+    name: "STOP BÜRO NORD"
+    turn_on_action:
+      - lambda: |-
+          ((SomfyESPCover*)id(somfy2))->make_call().set_command_stop().perform();
+  - platform: template
+    name: "PROG BÜRO SÜD"
+    turn_on_action:
+      - lambda: |-
+          ((SomfyESPCover*)id(somfy3))->program();
+  - platform: template
+    name: "STOP BÜRO SÜD"
+    turn_on_action:
+      - lambda: |-
+          ((SomfyESPCover*)id(somfy3))->make_call().set_command_stop().perform();        
+  - platform: template
+    name: "PROG SCHLAFZIMMER"
+    turn_on_action:
+      - lambda: |-
+          ((SomfyESPCover*)id(somfy4))->program();
+  - platform: template
+    name: "STOP SCHLAFZIMMER"
+    turn_on_action:
+      - lambda: |-
+          ((SomfyESPCover*)id(somfy4))->make_call().set_command_stop().perform();  
+  - platform: template
+    name: "PROG KÜCHE"
+    turn_on_action:
+      - lambda: |-
+          ((SomfyESPCover*)id(somfy5))->program();
+  - platform: template
+    name: "STOP KÜCHE"
+    turn_on_action:
+      - lambda: |-
+          ((SomfyESPCover*)id(somfy5))->make_call().set_command_stop().perform();          
+  - platform: template
+    name: "PROG BAD"
+    turn_on_action:
+      - lambda: |-
+          ((SomfyESPCover*)id(somfy6))->program();
+  - platform: template
+    name: "STOP BAD"
+    turn_on_action:
+      - lambda: |-
+          ((SomfyESPCover*)id(somfy6))->make_call().set_command_stop().perform();                       

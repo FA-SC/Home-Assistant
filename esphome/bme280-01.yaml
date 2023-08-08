@@ -1,0 +1,54 @@
+esphome:
+  name: "bme280-01"
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Bme280 01 Fallback Hotspot"
+    password: "KVXiKopqtlQG"
+
+captive_portal:
+
+#web_server:
+#  port: 80
+#  auth:
+#    username: tbd
+#    password: tbd
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+# i2C Config
+i2c:
+  scan: True
+  id: bus_a
+
+# BME280 Sensor
+sensor:
+  - platform: bme280
+    temperature:
+      name: "BME280_01 Temperature"
+      oversampling: 16x
+    pressure:
+      name: "BME280_01 Pressure"
+    humidity:
+      name: "BME280_01 Humidity"
+    update_interval: 10s
+    i2c_id: bus_a
+    address: 0x76
+    
+  - platform: uptime
+    name: Uptime Sensor
+
+  - platform: wifi_signal
+    name: "WiFi Signal Sensor"  
