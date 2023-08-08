@@ -4,7 +4,6 @@
 !*/
 # You can whitelist files/folders with !, these will not be ignored.
 !.gitignore
-!ui-lovelace.yaml
 !automations.yaml
 !configuration.yaml
 !customize.yaml
@@ -21,9 +20,10 @@
 .themes
 .tts
 .www
-.esphome
 .deps
 .blueprints
+.custom_components
+.
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
