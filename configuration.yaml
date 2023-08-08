@@ -34,7 +34,7 @@ proxmoxve:
           - 107
           - 108
 
-#Nextcloud Kalender
+#HA Kalender
 calendar:
   - platform: caldav
     username: !secret calendar_username
