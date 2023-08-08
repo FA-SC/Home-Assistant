@@ -3,10 +3,14 @@
 *
 !*/
 # You can whitelist files/folders with !, these will not be ignored.
-!*.yaml
 !.gitignore
-!*.md
 !ui-lovelace.yaml
+!automations.yaml
+!configuration.yaml
+!customize.yaml
+!scenes.yaml
+!scripts.yaml
+!*.md
 
 # Ignore folders.
 .storage
