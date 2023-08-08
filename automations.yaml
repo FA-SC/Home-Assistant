@@ -29,7 +29,7 @@
   description: ''
   trigger:
   - platform: time
-    at: '13:00'
+    at: '11:30:00'
   condition: []
   action:
   - type: turn_on
@@ -456,23 +456,6 @@
       message: '⚠️ NGINX: Downtime detected! ⚠️'
       title: Alert!
   mode: single
-- id: '1661798935396'
-  alias: Test Schalter Schlafzimmer
-  description: ''
-  use_blueprint:
-    path: Xelloss99/zha-ikea-tradfri-on-off-switch.yaml
-    input:
-      remote: 21a36639ff8bfafab8b79fb8c3c6a95a
-      button_on_short:
-      - type: light.turn_on
-        device_id: 94367a30a9364ee8e3ddebb0a5f8c8d8
-        entity_id: light.schlafzimmer_deckenleuchte
-        domain: light
-      button_off_short:
-      - type: light.turn_off
-        device_id: 94367a30a9364ee8e3ddebb0a5f8c8d8
-        entity_id: light.schlafzimmer_deckenleuchte
-        domain: light
 - id: '1661799835995'
   alias: Schlafzimmer Schalter an
   description: ''
@@ -621,26 +604,6 @@
     entity_id: vacuum.valetudo_purefrugaltermite
     type: clean
   mode: single
-- id: '1668203537518'
-  alias: Test
-  description: ''
-  trigger: []
-  condition: []
-  action:
-  - service: notify.mobile_app_fabians_iphone_13
-    data:
-      message: Gedrückt halten für Auswahl.
-      title: Test Titel
-      data:
-        actions:
-        - action: 1
-          title: Nummer 1
-        - action: 2
-          title: Nummer 2
-        - action: 3
-          title: Nummer 3
-          destructive: true
-  mode: single
 - id: '1668377711666'
   alias: Leaving Home
   description: ''
@@ -673,46 +636,6 @@
     data:
       message: Reinigungsvorgang beendet.
       title: It‘s clean again!
-  mode: single
-- id: '1670121725905'
-  alias: Test HomePod
-  description: ''
-  trigger: []
-  condition: []
-  action:
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.homepod_schlafzimmer
-    data:
-      media_content_id: media-source://radio_browser/0cd06e2c-74b2-4724-9df5-6642a641f749
-      media_content_type: audio/aac
-    metadata:
-      title: DASDING
-      thumbnail: https://dasding.de/assets/dasding/apple-touch-icon-120x120.png
-      media_class: music
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://radio_browser
-      - media_content_type: music
-        media_content_id: media-source://radio_browser/country/DE
-  mode: single
-- id: '1670239255758'
-  alias: Test Test
-  description: ''
-  trigger:
-  - device_id: bbe96cf77ea855030df7fcbc504b40d3
-    domain: zha
-    platform: device
-    type: device_rotated
-    subtype: left
-  condition: []
-  action:
-  - device_id: a744ce073ffd0d3e5fa3c7160ed4726b
-    domain: light
-    entity_id: light.lampe_wohnzimmer_stehleuchte_level_light_color_on_off
-    type: brightness_decrease
   mode: single
 - id: '1670360519503'
   alias: Schreibtischlampe Schalter

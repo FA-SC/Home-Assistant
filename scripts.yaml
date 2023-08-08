@@ -71,15 +71,3 @@ leaving_home:
     metadata: {}
   mode: single
   icon: mdi:home-export-outline
-neues_skript:
-  alias: Neues Skript
-  sequence:
-  - service: camera.snapshot
-    data: {}
-    target:
-      device_id: 203089f9b10fa76a17dd09efdfb2cd4c
-  mode: single
-git_update:
-  alias: GIT Update
-  sequence: []
-  mode: single
